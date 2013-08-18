@@ -1,0 +1,34 @@
+{
+    "modules": {
+        "Things": {
+            "fields": {
+                "name": {
+                    "name": "name",
+                    "type": "name",
+                    "unified_search": true
+                },
+                "int_field": {
+                    "name": "int_field",
+                    "type": "int"
+                },
+                "currency_field": {
+                    "name": "currency_field",
+                    "type": "currency"
+                },
+                "relate_field": {
+                    "name": "relate_field",
+                    "type": "relate"
+                },
+                "bool_field": {
+                    "name": "bool_field",
+                    "type": "boolean"
+                },
+                "other_things": {
+                    "name": "other_thing",
+                    "type": "link",
+                    "relationship": "things_other_things"
+                }
+            }
+        }
+    }
+}

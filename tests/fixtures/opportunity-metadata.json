@@ -1,0 +1,75 @@
+{
+    "modules": {
+        "Opportunities": {
+            "fields": {
+                "account_name": {
+                    "name": "account_name",
+                    "rname": "name",
+                    "id_name": "account_id",
+                    "vname": "LBL_ACCOUNT_NAME",
+                    "type": "relate",
+                    "table": "accounts",
+                    "join_name": "accounts",
+                    "isnull": "true",
+                    "module": "Accounts",
+                    "dbType": "varchar",
+                    "link": "accounts",
+                    "len": "255",
+                    "source": "non-db",
+                    "unified_search": true,
+                    "required": true,
+                    "importable": "required"
+                },
+                "account_id": {
+                    "name": "account_id",
+                    "vname": "LBL_ACCOUNT_ID",
+                    "type": "id",
+                    "source": "non-db",
+                    "audited": true
+                },
+                "contacts": {
+                    "name": "contacts",
+                    "type": "link",
+                    "relationship": "opportunities_contacts"
+                },
+                "accounts": {
+                    "name": "accounts",
+                    "type": "link",
+                    "relationship": "accounts_opportunities"
+                },
+                "calls": {
+                    "name": "calls",
+                    "type": "link",
+                    "relationship": "opportunity_calls"
+                }
+
+            },
+            "relationships": {
+                "opportunities_contacts": {
+                    "lhs_module": "Opportunities",
+                    "lhs_link": "contacts",
+                    "rhs_module": "Contacts",
+                    "rhs_link": "opportunities",
+                    "relationship_type": "many-to-many"
+                },
+                "accounts_opportunities": {
+                    "lhs_module": "Accounts",
+                    "lhs_table": "accounts",
+                    "lhs_link": "opportunities",
+                    "rhs_module": "Opportunities",
+                    "rhs_table": "opportunities",
+                    "rhs_link": "opportunities",
+                    "relationship_type": "one-to-many"
+                },
+                "opportunity_calls": {
+                    "lhs_module": "Opportunities",
+                    "lhs_link": "calls",
+                    "rhs_module": "Calls",
+                    "rhs_link": "opportunities",
+                    "relationship_type": "one-to-many"
+                }
+
+            }
+        }
+    }
+}

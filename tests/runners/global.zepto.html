@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Global Runner</title>
+
+    <!--required classes for tests--->
+    <script type="text/javascript" src='../../lib/backbone/underscore.js'></script>
+    <script type="text/javascript" src='../../lib/zepto/zepto.js'></script>
+    <script type="text/javascript" src='../../lib/backbone/backbone.js'></script>
+    <script type="text/javascript" src="../../lib/handlebars/handlebars-1.0.rc.1.js"></script>
+	<script type="text/javascript" src='../../lib/sugarapi/sugarapi.js'></script>
+	<script type="text/javascript" src="../../lib/stash/stash.js"></script>
+    <script type="text/javascript" src="../../lib/async/async.js"></script>
+    <script type="text/javascript" src="../../lib/php-js/version_compare.js"></script>
+
+
+    <!-- app files -->
+    <script src='../../src/app.js'></script>
+    <script src='../../src/utils/utils.js'></script>
+    <script src="../../src/core/events.js"></script>
+    <script src='../../src/core/cache.js'></script>
+    <script src='../../src/core/error.js'></script>
+    <script src='../../src/view/template.js'></script>
+    <script src='../../src/core/context.js'></script>
+    <script src='../../src/core/controller.js'></script>
+    <script src='../../src/core/router.js'></script>
+    <script src='../../src/core/metadata-manager.js'></script>
+    <script src='../../src/core/acl.js'></script>
+    <script src='../../src/core/user.js'></script>
+    <script src='../../src/utils/logger.js'></script>
+    <script src='../config.js'></script>
+    <script src='../../src/data/validation.js'></script>
+    <script src='../../src/data/bean.js'></script>
+    <script src='../../src/data/bean-collection.js'></script>
+    <script src='../../src/data/mixed-bean-collection.js'></script>
+    <script src='../../src/data/data-manager.js'></script>
+    <script src='../../src/view/hbs-helpers.js'></script>
+    <script src='../../src/view/view-manager.js'></script>
+    <script src='../../src/view/component.js'></script>
+    <script src='../../src/view/field.js'></script>
+    <script src='../../src/view/view.js'></script>
+    <script src='../../src/view/layout.js'></script>
+    <script src='../../src/view/alert.js'></script>
+    <script src="../../src/core/language.js"></script>
+	<script src="../../src/utils/date.js"></script>
+    <script src="../../src/utils/currency.js"></script>
+
+    <link rel="stylesheet" href="../../../sidecar/lib/jquery-ui/css/smoothness/jquery-ui-1.8.18.custom.css"/>
+
+    <!--jasmine and sinon core files--->
+    <script src='../../../sidecar/lib/sinon/sinon.js'></script>
+    <script src='../../../sidecar/lib/jasmine/jasmine.js'></script>
+    <script src='../../../sidecar/lib/jasmine/jasmine-html.js'></script>
+    <script src='../../../sidecar/lib/jasmine-sinon/jasmine-sinon.js'></script>
+    <script src='../../../sidecar/lib/jasmine-zepto/jasmine-zepto.js'></script>
+  	<script src="../../../sidecar/lib/jasmine-ci/jasmine-reporters/jasmine.phantomjs-reporter.js"></script>
+
+    <link rel="stylesheet" href="../../../sidecar/lib/jasmine/jasmine.css"/>
+
+    <!--fixtures--->
+    <script type="text/javascript" src='../fixtures/api.js'></script>
+	<script type="text/javascript" src='../../../sidecar/tests/fixtures/metadata.js'></script>
+	<script type="text/javascript" src='../../../sidecar/tests/fixtures/language.js'></script>
+    <script type="text/javascript" src='../../../sidecar/tests/fixtures/user.js'></script>
+
+
+    <!--tests suites--->
+    <script src='../spec-helper.js'></script>
+    <script src='../suites/sugarapi/sugarapi.js'></script>
+    <script src='../suites/utils/logger.js'></script>
+    <script src='../suites/app/config.js'></script>
+    <script src='../suites/utils/utils.js'></script>
+    <script src="../suites/app/app.js"></script>
+    <script src="../suites/core/router.js"></script>
+    <script src="../suites/core/controller.js"></script>
+    <script src="../suites/data/data-manager.js"></script>
+    <script src="../suites/data/bean.js"></script>
+    <script src="../suites/data/bean-collection.js"></script>
+    <script src="../suites/data/mixed-bean-collection.js"></script>
+    <script src="../suites/data/validation.js"></script>
+    <script src="../suites/data/relationships.js"></script>
+    <script src="../suites/core/metadata-manager.js"></script>
+    <script src="../suites/view/hbs-helpers.js"></script>
+    <script src="../suites/view/view-manager.js"></script>
+    <script src="../suites/view/component.js"></script>
+    <script src="../suites/view/view.js"></script>
+    <script src='../suites/view/field.js'></script>
+    <script src="../suites/view/layout.js"></script>
+    <script src='../suites/view/alert.js'></script>
+    <script src="../suites/core/context.js"></script>
+    <script src="../suites/core/events.js"></script>
+    <script src="../suites/core/language.js"></script>
+    <script src="../suites/core/cache.js"></script>
+    <script src="../suites/core/acl.js"></script>
+    <script src="../suites/view/template.js"></script>
+    <script src="../suites/core/error.js"></script>
+    <script src="../suites/core/user.js"></script>
+	<script src="../suites/utils/date.js"></script>
+    <script src="../suites/utils/currency.js"></script>
+
+    <!--init jasmine and exec suites--->
+    <script type="text/javascript">
+        (function () {
+            var jasmineEnv = jasmine.getEnv();
+            jasmineEnv.updateInterval = 1000;
+
+            var trivialReporter = new jasmine.TrivialReporter();
+
+            jasmineEnv.addReporter(trivialReporter);
+
+            // Allows us to create report in JUnit XML Report format for CI.
+            // I've observed no "slow down" when ran from browser ;=)
+  			jasmineEnv.addReporter(new jasmine.PhantomJSReporter());
+
+            jasmineEnv.specFilter = function(spec) {
+                return trivialReporter.specFilter(spec);
+            };
+
+            var currentWindowOnload = window.onload;
+
+            window.onload = function() {
+                if (currentWindowOnload) {
+                    currentWindowOnload();
+                }
+                execJasmine();
+            };
+
+            function execJasmine() {
+                jasmineEnv.execute();
+            }
+
+        })();
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
