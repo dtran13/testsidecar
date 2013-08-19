@@ -2,7 +2,7 @@
 
 TEST_RESULTS="TEST_RESULTS_DIR"
 OUT="${TEST_RESULTS}/html"
-genhtml -o ${OUT} --title --function-coverage --branch-coverage --highlight ${TEST_RESULTS}/jsTestDriver.conf-coverage.dat
+/Users/dtran/Downloads/lcov-1.9/bin/genhtml -o ${OUT} --title --function-coverage --branch-coverage --highlight ${TEST_RESULTS}/jsTestDriver.conf-coverage.dat
 
 echo '
 To view generated reports:
